@@ -1,16 +1,33 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 import { useSQLiteContext } from "expo-sqlite";
 import { useEffect, useState } from "react";
-import { Category, Transaction } from "@/assets/types/db";
+import { Category, Transaction } from "@/components/types/type";
 import * as FileSystem from "expo-file-system";
+import TransactionListItem from "@/components/TransactionListItem";
 
 export default function Home() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string>("");
-
+  const [error, setError] = useState("");
+  
   const db = useSQLiteContext();
+
+  const deleteTransaction = async (id: number) => {
+    try {
+      await db.withTransactionAsync(async () => {
+        await db.runAsync(`DELETE FROM Transactions WHERE id=?;`, [id]);
+      });
+      
+      // Update state setelah menghapus
+      setTransactions(prevTransactions => 
+        prevTransactions.filter(transaction => transaction.id !== id)
+      );
+    } catch (err) {
+      console.error("Error deleting transaction:", err);
+      setError("Failed to delete transaction");
+    }
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -23,7 +40,7 @@ export default function Home() {
 
         // Get transactions
         const transactionsResult = await db.getAllAsync(
-          `SELECT * FROM Transactions`
+          `SELECT * FROM Transactions ORDER BY date DESC`
         );
         console.log("Transactions:", transactionsResult);
         setTransactions(transactionsResult as Transaction[]);
@@ -48,15 +65,15 @@ export default function Home() {
 
   if (error) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text style={{ color: "red" }}>{error}</Text>
+      <View className="flex-1 items-center justify-center">
+        <Text className="text-red-500">{error}</Text>
       </View>
     );
   }
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View className="flex-1 items-center justify-center">
         <ActivityIndicator size="large" />
         <Text>Loading data...</Text>
       </View>
@@ -64,26 +81,12 @@ export default function Home() {
   }
 
   return (
-    <View style={{ flex: 1, padding: 16 }}>
-      <Text style={{ fontSize: 24, marginBottom: 16 }}>Transactions</Text>
-      {transactions.length > 0 ? (
-        transactions.map((transaction) => (
-          <View
-            key={transaction.id}
-            style={{
-              marginBottom: 8,
-              padding: 8,
-              backgroundColor: "#f0f0f0",
-              borderRadius: 8,
-            }}
-          >
-            <Text>ID: {transaction.id}</Text>
-            {/* Sesuaikan dengan struktur data Transaction Anda */}
-          </View>
-        ))
-      ) : (
-        <Text>No transactions found</Text>
-      )}
-    </View>
+    <ScrollView className="flex-1">
+      <TransactionListItem
+        transactions={transactions}
+        categories={categories}
+        deleteTransaction={deleteTransaction}
+      />
+    </ScrollView>
   );
 }

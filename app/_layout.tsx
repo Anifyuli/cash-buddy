@@ -2,7 +2,7 @@ import { Stack } from "expo-router";
 import { SQLiteProvider } from "expo-sqlite";
 import { Suspense, useEffect, useState } from "react";
 import { ActivityIndicator, View, Text } from "react-native";
-import * as Db from "../utils/db";
+import * as Db from "@/components/utils/db";
 
 export default function Layout() {
   const [dbLoaded, setDbLoaded] = useState<boolean>(false);
