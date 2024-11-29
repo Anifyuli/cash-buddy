@@ -12,9 +12,13 @@ export default function TransactionSummary({
     month: "long",
     year: "numeric",
   });
+  
   useEffect(() => {
-    console.log("Props changed:", { totalExpenses, totalIncome });
-  });
+    console.log("TransactionSummary received new props:", {
+      totalExpenses,
+      totalIncome,
+    });
+  }, [totalExpenses, totalIncome]);
 
   // Function to determine the style based on the value (positive or negative)
   const getMoneyTextStyle = (value: number): TextStyle => ({
@@ -77,5 +81,4 @@ const styles = StyleSheet.create({
     color: "#333",
     marginBottom: 10,
   },
-  // Removed moneyText style since we're now generating it dynamically
 });
