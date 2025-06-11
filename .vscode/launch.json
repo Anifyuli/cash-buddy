@@ -1,0 +1,46 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Expo Start",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["start"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Expo Android",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["android"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Expo iOS",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["ios"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Expo Web",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["web"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Run Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["test"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
