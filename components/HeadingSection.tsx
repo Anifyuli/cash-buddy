@@ -18,6 +18,14 @@ export default function HeadingSection() {
               600K
             </Text>
           </View>
+          <View>
+            <Text>Incomes</Text>
+            <Text>700K</Text>
+          </View>
+          <View>
+            <Text>Expenses</Text>
+            <Text>100K</Text>
+          </View>
         </Card.Content>
         <Card.Actions style={styles.cardActions}>
           <Button

@@ -1,15 +1,18 @@
 const { getDefaultConfig } = require('expo/metro-config');
+const path = require('path');
 
-/** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(__dirname);
+const projectRoot = __dirname;
 
-config.resolver.resolveRequest = (context, moduleName, platform) => {
-  if (moduleName === '@' || moduleName.startsWith('@/')) {
-    const updatedModuleName = moduleName.replace('@', '.');
-    return context.resolveRequest(context, updatedModuleName, platform);
-  }
-  
-  return context.resolveRequest(context, moduleName, platform);
+const config = getDefaultConfig(projectRoot);
+
+// Tambahkan alias sesuai `tsconfig.json`
+config.resolver.extraNodeModules = {
+  '@': path.resolve(projectRoot),
 };
+
+// Optional: jika kamu ingin `@/*` juga dikenali saat import
+config.watchFolders = [
+  path.resolve(projectRoot),
+];
 
 module.exports = config;
