@@ -7,6 +7,10 @@
     "icon": "./assets/img/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "scheme": [
+      "cashbuddy",
+      "com.anifyuli.cashbuddy"
+    ],
     "splash": {
       "image": "./assets/img/splash-icon.png",
       "resizeMode": "contain",
@@ -17,7 +21,8 @@
       }
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anifyuli.cashbuddy"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,8 +34,14 @@
       "package": "com.anifyuli.cashbuddy"
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/img/favicon.png"
     },
-    "plugins": ["expo-font", "expo-navigation-bar", "expo-system-ui"]
+    "plugins": [
+      "expo-font",
+      "expo-navigation-bar",
+      "expo-system-ui",
+      "expo-router"
+    ]
   }
 }

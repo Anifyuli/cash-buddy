@@ -6,7 +6,6 @@ module.exports = function (api) {
       production: {
         plugins: [
           "react-native-paper/babel",
-          "module-resolver",
           {
             alias: {
               "@": "./",

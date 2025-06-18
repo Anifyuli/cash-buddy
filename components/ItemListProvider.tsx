@@ -1,6 +1,6 @@
-import { View, FlatList, StyleSheet } from "react-native";
-import { Text, useTheme } from "react-native-paper";
 import React from "react";
+import { FlatList, StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
 import TransactionListItem from "./TransactionListItem";
 
 const TRANSACTION_DATA = [
@@ -97,18 +97,19 @@ const TRANSACTION_DATA = [
 ];
 
 export default function ItemListProvider() {
-  const theme = useTheme();
-
   return (
     <View style={styles.container}>
-      <Text variant="headlineMedium" style={{ textAlign: "center", marginBottom: 16 }}>
+      <Text
+        variant="headlineMedium"
+        style={{ textAlign: "center", marginBottom: 16 }}
+      >
         Transaction History
       </Text>
       <FlatList
         data={TRANSACTION_DATA}
         renderItem={({ item }) => (
-          <TransactionListItem 
-            title={item.title} 
+          <TransactionListItem
+            title={item.title}
             description={item.description}
             icon={item.icon}
             amount={item.amount}
@@ -121,7 +122,11 @@ export default function ItemListProvider() {
         nestedScrollEnabled={true}
         contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }}
         style={{ flex: 1 }}
-        ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: '#E0E0E0', marginLeft: 16 }} />}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{ height: 1, backgroundColor: "#E0E0E0", marginLeft: 16 }}
+          />
+        )}
         initialNumToRender={10}
         maxToRenderPerBatch={10}
         windowSize={10}

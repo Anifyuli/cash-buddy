@@ -1,14 +1,6 @@
-import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import { Keyboard, StyleSheet, View } from "react-native";
-import {
-  Button,
-  Card,
-  IconButton,
-  MD3Colors,
-  Text,
-  useTheme,
-} from "react-native-paper";
+import { Button, Card, IconButton, Text, useTheme } from "react-native-paper";
 import InputModal from "./InputModal";
 
 export default function HeadingSection() {
@@ -20,7 +12,7 @@ export default function HeadingSection() {
     setModalVisible(true);
     setTimeout(() => {
       Keyboard.addListener("keyboardDidShow", () =>
-        console.log("Keyboard did show")
+        console.log("Keyboard did show"),
       );
     }, 200);
   };

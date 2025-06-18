@@ -1,6 +1,7 @@
 import HeadingSection from "@/components/HeadingSection";
 import HistoryFAB from "@/components/HistoryFAB";
 import ItemListProvider from "@/components/ItemListProvider";
+import { router } from "expo-router";
 import { StyleSheet, View } from "react-native";
 import { useTheme } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,7 +20,7 @@ export default function HomeView() {
         <View style={styles.listContainer}>
           <ItemListProvider />
         </View>
-        <HistoryFAB />
+        <HistoryFAB onPress={() => router.navigate("/histor")} />
       </SafeAreaView>
     </>
   );
