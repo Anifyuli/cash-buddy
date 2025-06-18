@@ -1,33 +1,36 @@
 {
   "expo": {
-    "name": "cash-buddy",
+    "name": "Cash Buddy",
     "slug": "cash-buddy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/icon.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/img/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F7F8F9",
+      "dark": {
+        "image": "./assets/img/splash-icon.png",
+        "backgroundColor": "#48434C"
+      }
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/img/icon.png",
+        "backgroundColor": "#F7F8F9",
+        "monochromeImage": "./assets/img/adaptive-icon.png"
       },
       "edgeToEdgeEnabled": false,
       "package": "com.anifyuli.cashbuddy"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/img/favicon.png"
     },
-    "plugins": [
-      "expo-font"
-    ]
+    "plugins": ["expo-font", "expo-navigation-bar", "expo-system-ui"]
   }
 }

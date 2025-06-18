@@ -2554,6 +2554,7 @@ __metadata:
     babel-plugin-module-resolver: "npm:^5.0.2"
     expo: "npm:~53.0.11"
     expo-font: "npm:~13.3.1"
+    expo-navigation-bar: "npm:~4.2.5"
     expo-status-bar: "npm:~2.2.3"
     expo-system-ui: "npm:~5.0.8"
     metro-resolver: "npm:^0.82.4"
@@ -3203,6 +3204,22 @@ __metadata:
   dependencies:
     invariant: "npm:^2.2.4"
   checksum: 10c0/685baaa937e512e3d71a39174ecfccc0a5170b90e0d1cac60ab8e5d826ffd6f778eb6a500c46913c8b791747694f5ae376e0cf836186cd78f9b5e81cb197cb78
+  languageName: node
+  linkType: hard
+
+"expo-navigation-bar@npm:~4.2.5":
+  version: 4.2.5
+  resolution: "expo-navigation-bar@npm:4.2.5"
+  dependencies:
+    "@react-native/normalize-colors": "npm:0.79.3"
+    debug: "npm:^4.3.2"
+    react-native-edge-to-edge: "npm:1.6.0"
+    react-native-is-edge-to-edge: "npm:^1.1.6"
+  peerDependencies:
+    expo: "*"
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/9d7a39a122970d9f2d8b0f705295fbded40fd8a3331f5bfb777dffc0e4866f5440a915c3a4a0366a5f2e9b90ffa18577a0b49de53b3fa54e00648091dc7e5e92
   languageName: node
   linkType: hard
 
